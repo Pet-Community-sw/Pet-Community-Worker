@@ -19,7 +19,6 @@ services:
       - "5672:5672"# RabbitMQ 서버 포트
       - "15672:15672"# 관리 UI 포트
     environment:
-      RABBITMQ_ERLANG_COOKIE: ${RABBITMQ_ERLANG_COOKIE} # 클러스터링 시 동일한 값으로 설정
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
       TZ: Asia/Seoul
