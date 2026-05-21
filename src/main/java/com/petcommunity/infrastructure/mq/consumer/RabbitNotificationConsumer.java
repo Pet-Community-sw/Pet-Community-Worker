@@ -1,5 +1,6 @@
 package com.petcommunity.infrastructure.mq.consumer;
 
+import com.petcommunity.application.in.notification.NotificationUseCase;
 import com.petcommunity.infrastructure.mq.RabbitKeys;
 import com.petcommunity.infrastructure.mq.RabbitRetryHandler;
 import lombok.RequiredArgsConstructor;

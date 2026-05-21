@@ -1,4 +1,4 @@
-package com.petcommunity.application.service;
+package com.petcommunity.application.service.member;
 
 import com.petcommunity.application.common.JsonUtil;
 import com.petcommunity.application.in.MemberSearchUseCase;
