@@ -1,5 +1,6 @@
 package com.petcommunity.infrastructure.mq.consumer;
 
+import com.petcommunity.infrastructure.mail.MailProvider;
 import com.petcommunity.infrastructure.mq.RabbitKeys;
 import com.petcommunity.infrastructure.mq.RabbitRetryHandler;
 import lombok.RequiredArgsConstructor;
