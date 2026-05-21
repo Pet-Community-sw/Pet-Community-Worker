@@ -1,0 +1,57 @@
+spring:
+  elasticsearch:
+    Uris: ${ELASTICSEARCH_URI}
+  datasource:
+    hikari:
+      maximum-pool-size: 30
+      minimum-idle: 10
+      connection-timeout: 3000
+      validation-timeout: 1000
+      leak-detection-threshold: 5000
+    url: ${MYSQL_URL}
+    username: ${MYSQL_ROOT_USERNAME}
+    password: ${MYSQL_ROOT_PASSWORD}
+
+  mail:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    username: ${SMTP_EMAIL}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        SMTP:
+          auth: true
+          STARTTLS:
+            enable: true
+    default-encoding: UTF-8
+
+  rabbitmq:
+    addresses: ${RABBITMQ_HOST}:${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+    listener:
+      simple:
+        prefetch: 10
+        acknowledge-mode: auto
+        concurrency: 4
+        max-concurrency: 8
+    publisher-confirm-type: correlated #해당 메시지 전송 확인
+    requested-heartbeat: 30
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+
+springdoc:
+  swagger-ui:
+    path: /swagger
+
+mail:
+  provider: smtp
+
+server:
+  address: 0.0.0.0
+  port: 8080
+
+kind: Application
