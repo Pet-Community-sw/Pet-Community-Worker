@@ -1,8 +1,8 @@
 package com.petcommunity.petcommunityworker.application.service.member;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
-import com.petcommunity.petcommunityworker.application.in.MemberSearchUseCase;
-import com.petcommunity.petcommunityworker.application.in.object.MemberEvent;
+import com.petcommunity.petcommunityworker.application.usecase.MemberSearchUseCase;
+import com.petcommunity.petcommunityworker.application.usecase.object.MemberEvent;
 import com.petcommunity.petcommunityworker.domain.member.MemberSearchRepository;
 import com.petcommunity.petcommunityworker.domain.member.mapper.MemberMapper;
 import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;

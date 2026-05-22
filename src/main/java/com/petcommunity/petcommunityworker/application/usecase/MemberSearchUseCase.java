@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.in;
+package com.petcommunity.petcommunityworker.application.usecase;
 
 
 import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;

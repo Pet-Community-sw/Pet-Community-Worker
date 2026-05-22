@@ -1,6 +1,6 @@
 package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
 
-import com.petcommunity.petcommunityworker.application.in.MemberSearchUseCase;
+import com.petcommunity.petcommunityworker.application.usecase.MemberSearchUseCase;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitKeys;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitRetryHandler;
 import lombok.RequiredArgsConstructor;

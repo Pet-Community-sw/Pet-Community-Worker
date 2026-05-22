@@ -1,8 +1,8 @@
 package com.petcommunity.petcommunityworker.infrastructure.mail;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
-import com.petcommunity.petcommunityworker.application.in.email.EmailEvent;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
+import com.petcommunity.petcommunityworker.application.usecase.email.EmailEvent;
 import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;

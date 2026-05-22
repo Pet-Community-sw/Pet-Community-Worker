@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.in.email;
+package com.petcommunity.petcommunityworker.application.usecase.email;
 
 
 import lombok.AllArgsConstructor;

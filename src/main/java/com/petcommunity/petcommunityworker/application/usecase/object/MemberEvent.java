@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.in.object;
+package com.petcommunity.petcommunityworker.application.usecase.object;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
