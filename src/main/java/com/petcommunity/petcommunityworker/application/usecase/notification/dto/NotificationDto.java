@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.in.chatting;
+package com.petcommunity.petcommunityworker.application.usecase.notification.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class NotificationDto {
-    private Long userId;
-    private String message;
+    Long id;
+    String message;
 }
