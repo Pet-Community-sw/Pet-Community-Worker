@@ -9,6 +9,4 @@ public interface MemberSearchRepository {
     Optional<MemberSearch> find(Long id);
 
     void save(MemberSearch document);
-
-    void delete(Long id);
 }
