@@ -1,20 +1,10 @@
 services:
-  es:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.18
-    container_name: pet-app-es
-    environment:
-      - discovery.type=single-node
-      - xpack.security.enabled=false #비번 없이 접속하기 위해 false로 설정
-      - ES_JAVA_OPTS=-Xms256m -Xmx256m #힙 메모리 설정 es는 jvm 기반이라 메모리 설정 필요
-    ports:
-      - "9200:9200"
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
-
   rabbitmq:
     image: rabbitmq:3-management
     container_name: pet-app-rabbitmq
     restart: always
+    networks:
+      - pet-community-network
     ports:
       - "5672:5672"# RabbitMQ 서버 포트
       - "15672:15672"# 관리 UI 포트
@@ -36,17 +26,20 @@ services:
     image: quay.io/debezium/server:3.4
     container_name: pet-app-debezium
     restart: always
+    networks:
+      - pet-community-network
     depends_on:
-      mysql:
-        condition: service_healthy
       rabbitmq:
         condition: service_healthy
     volumes:
       - ./debezium/config:/debezium/config
       - ./debezium/data:/debezium/data
 
+networks:
+  pet-community-network:
+    external: true
+
 volumes:
-  es-data:
   rabbitmq-data:
 
 
