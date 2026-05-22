@@ -1,9 +1,8 @@
 package com.petcommunity.petcommunityworker.infrastructure.database.cache.adapter;
 
-import com.petcommunity.petcommunityworker.application.in.notification.dto.NotificationListDto;
 import com.petcommunity.petcommunityworker.application.out.cache.NotificationsCachePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.time.Duration;
@@ -12,15 +11,15 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class RedisNotificationCacheAdapter implements NotificationsCachePort {
 
-    private final RedisTemplate<String, NotificationListDto> notificationRedisTemplate;
+    private final StringRedisTemplate template;
 
     public static String getKey(Long id) {
         return "notification:" + id;
     }
 
     @Override
-    public void create(Long id, NotificationListDto notificationListDto, int day) {
-        notificationRedisTemplate.opsForList().rightPush(getKey(id), notificationListDto);
-        notificationRedisTemplate.expire(getKey(id), Duration.ofDays(day));
+    public void create(Long id, String message, int day) {
+        template.opsForList().rightPush(getKey(id), message);
+        template.expire(getKey(id), Duration.ofDays(day));
     }
 }

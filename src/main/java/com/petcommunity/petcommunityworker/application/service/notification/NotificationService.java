@@ -6,7 +6,6 @@ import com.petcommunity.petcommunityworker.application.in.chatting.SendResponseD
 import com.petcommunity.petcommunityworker.application.in.chatting.type.CommandType;
 import com.petcommunity.petcommunityworker.application.in.notification.NotificationUseCase;
 import com.petcommunity.petcommunityworker.application.in.notification.dto.NotificationEvent;
-import com.petcommunity.petcommunityworker.application.in.notification.dto.NotificationListDto;
 import com.petcommunity.petcommunityworker.application.out.SendPort;
 import com.petcommunity.petcommunityworker.application.out.cache.AppOnlineCachePort;
 import com.petcommunity.petcommunityworker.application.out.cache.NotificationsCachePort;
@@ -14,8 +13,6 @@ import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMess
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -43,7 +40,7 @@ public class NotificationService implements NotificationUseCase {
             log.info("backGroundMember");
 //            fcmService.sendNotification(member.getFcmToken().getFcmToken(), "명냥로드", message);
         }
-        notificationsCachePort.create(notificationEvent.id(), new NotificationListDto(notificationEvent.message(), LocalDateTime.now()), 3);
+        notificationsCachePort.create(notificationEvent.id(), notificationEvent.message(), 3);
     }
 }
 
