@@ -1,16 +1,6 @@
 spring:
   elasticsearch:
-    Uris: ${ELASTICSEARCH_URI}
-  datasource:
-    hikari:
-      maximum-pool-size: 30
-      minimum-idle: 10
-      connection-timeout: 3000
-      validation-timeout: 1000
-      leak-detection-threshold: 5000
-    url: ${MYSQL_URL}
-    username: ${MYSQL_ROOT_USERNAME}
-    password: ${MYSQL_ROOT_PASSWORD}
+    uris: ${ELASTICSEARCH_URI}
 
   mail:
     host: ${SMTP_HOST}
@@ -19,9 +9,9 @@ spring:
     password: ${SMTP_PASSWORD}
     properties:
       mail:
-        SMTP:
+        smtp:
           auth: true
-          STARTTLS:
+          starttls:
             enable: true
     default-encoding: UTF-8
 
@@ -43,15 +33,15 @@ spring:
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
 
-springdoc:
-  swagger-ui:
-    path: /swagger
+logging:
+  level:
+    org.elasticsearch.client: TRACE
 
 mail:
   provider: smtp
 
 server:
   address: 0.0.0.0
-  port: 8080
+  port: 8081
 
 kind: Application
