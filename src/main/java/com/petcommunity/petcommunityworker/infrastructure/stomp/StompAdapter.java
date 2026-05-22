@@ -1,8 +1,8 @@
 package com.petcommunity.petcommunityworker.infrastructure.stomp;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
-import com.petcommunity.petcommunityworker.application.in.chatting.SendResponseDto;
 import com.petcommunity.petcommunityworker.application.out.SendPort;
+import com.petcommunity.petcommunityworker.application.usecase.notification.dto.NotificationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -11,14 +11,16 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class StompAdapter implements SendPort {
 
+    private static final String CHANNEL = "notification-channel";
+
     private final StringRedisTemplate template;
     private final JsonUtil jsonUtil;
 
     @Override
-    public void send(String destination, SendResponseDto<?> sendResponseDto) {
+    public void send(String destination, NotificationDto notificationDto) {
 
-        template.convertAndSend("notification-channel",
-                jsonUtil.toJson(new RedisNotificationMessage(destination, sendResponseDto)));
+        template.convertAndSend(CHANNEL,
+                jsonUtil.toJson(new RedisNotificationMessage(destination, notificationDto)));
         //redis pub/sub
     }
 }
