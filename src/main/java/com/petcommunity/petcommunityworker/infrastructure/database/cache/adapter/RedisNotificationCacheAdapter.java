@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.infrastructure.database.cache;
+package com.petcommunity.petcommunityworker.infrastructure.database.cache.adapter;
 
 import com.petcommunity.petcommunityworker.application.in.notification.dto.NotificationListDto;
 import com.petcommunity.petcommunityworker.application.out.cache.NotificationsCachePort;
