@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.infrastructure.stomp;
+package com.petcommunity.petcommunityworker.infrastructure.send;
 
 import com.petcommunity.petcommunityworker.application.usecase.notification.object.NotificationDto;
 import lombok.AllArgsConstructor;
