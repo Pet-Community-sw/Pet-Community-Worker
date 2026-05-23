@@ -1,9 +1,9 @@
 package com.petcommunity.petcommunityworker.application.out.cache;
 
+import com.petcommunity.petcommunityworker.application.usecase.email.EmailCode;
+
 public interface EmailCachePort {
-    void createWithDuration(String key, String value, long duration);
+    void create(String key, EmailCode emailCode, long duration);
 
-    boolean exist(String key);
-
-    void delete(String key);
+    EmailCode get(String key);
 }

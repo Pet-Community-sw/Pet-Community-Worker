@@ -1,6 +1,8 @@
 package com.petcommunity.petcommunityworker.infrastructure.database.cache.adapter;
 
+import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
+import com.petcommunity.petcommunityworker.application.usecase.email.EmailCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
@@ -12,19 +14,17 @@ import java.time.Duration;
 public class RedisEmailRepository implements EmailCachePort {
 
     private final StringRedisTemplate template;
+    private final JsonUtil jsonUtil;
 
     @Override
-    public void createWithDuration(String key, String value, long duration) {
-        template.opsForValue().set(key, value, Duration.ofSeconds(duration));
+    public void create(String key, EmailCode emailCode, long duration) {
+        template.opsForValue().set(key, jsonUtil.toJson(emailCode), Duration.ofMinutes(duration));
     }
 
     @Override
-    public boolean exist(String key) {
-        return template.hasKey(key);
-    }
-
-    @Override
-    public void delete(String key) {
-        template.delete(key);
+    public EmailCode get(String key) {
+        String object = template.opsForValue().get(key);
+        if (object == null) return null;
+        return jsonUtil.fromJson(object, EmailCode.class);
     }
 }

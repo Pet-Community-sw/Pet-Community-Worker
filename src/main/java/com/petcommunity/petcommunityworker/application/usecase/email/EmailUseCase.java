@@ -1,8 +1,8 @@
-package com.petcommunity.petcommunityworker.infrastructure.mail;
-
+package com.petcommunity.petcommunityworker.application.usecase.email;
 
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 
-public interface MailProvider {
+public interface EmailUseCase {
+
     void send(EventMessage eventMessage);
 }
