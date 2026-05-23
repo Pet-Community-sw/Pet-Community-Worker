@@ -3,7 +3,6 @@ package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
 import com.petcommunity.petcommunityworker.application.usecase.member.MemberSearchUseCase;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitKeys;
-import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitRetryHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -11,17 +10,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class RabbitMemberConsumer {
+public class RabbitMemberConsumer extends RabbitAbstractConsumer {
 
     private final MemberSearchUseCase useCase;
-    private final RabbitRetryHandler rabbitRetryHandler;
 
     @RabbitListener(queues = RabbitKeys.MEMBER_QUEUE)
     public void hande(EventMessage eventMessage, Message message) {
-        try {
-            useCase.handle(eventMessage);
-        } catch (Exception e) {
-            rabbitRetryHandler.handle(eventMessage, message, e);
-        }
+        consume(eventMessage, message);
+    }
+
+    @Override
+    protected void handle(EventMessage eventMessage) {
+        useCase.handle(eventMessage);
     }
 }

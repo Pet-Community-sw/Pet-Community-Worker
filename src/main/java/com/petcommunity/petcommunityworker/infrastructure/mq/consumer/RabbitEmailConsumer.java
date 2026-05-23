@@ -3,7 +3,6 @@ package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
 import com.petcommunity.petcommunityworker.application.usecase.email.EmailUseCase;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitKeys;
-import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitRetryHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
@@ -13,17 +12,17 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class RabbitEmailConsumer {
+public class RabbitEmailConsumer extends RabbitAbstractConsumer {
 
-    private final RabbitRetryHandler rabbitRetryHandler;
     private final EmailUseCase useCase;
 
     @RabbitListener(queues = RabbitKeys.MAIL_QUEUE)
     public void handle(EventMessage eventMessage, Message message) {//메시지 본문과 메타데이터를 받음
-        try {
-            useCase.send(eventMessage);
-        } catch (Exception e) {
-            rabbitRetryHandler.handle(eventMessage, message, e);
-        }
+        consume(eventMessage, message);
+    }
+
+    @Override
+    protected void handle(EventMessage eventMessage) {
+        useCase.send(eventMessage);
     }
 }
