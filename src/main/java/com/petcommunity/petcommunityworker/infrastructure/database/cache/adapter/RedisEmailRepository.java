@@ -27,9 +27,4 @@ public class RedisEmailRepository implements EmailCachePort {
     public void delete(String key) {
         template.delete(key);
     }
-
-    @Override
-    public String get(String key) {
-        return template.opsForValue().get(key);
-    }
 }
