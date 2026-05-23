@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.infrastructure.database.cache.adapter;
+package com.petcommunity.petcommunityworker.infrastructure.database.redis;
 
 import com.petcommunity.petcommunityworker.application.out.cache.AppOnlineCachePort;
 import lombok.RequiredArgsConstructor;
