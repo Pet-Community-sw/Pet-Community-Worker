@@ -6,7 +6,7 @@ import com.petcommunity.petcommunityworker.application.out.cache.AppOnlineCacheP
 import com.petcommunity.petcommunityworker.application.out.cache.NotificationsCachePort;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.application.usecase.notification.NotificationUseCase;
-import com.petcommunity.petcommunityworker.application.usecase.notification.dto.NotificationDto;
+import com.petcommunity.petcommunityworker.application.usecase.notification.object.NotificationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

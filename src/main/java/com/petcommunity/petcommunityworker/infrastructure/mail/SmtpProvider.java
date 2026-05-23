@@ -3,7 +3,7 @@ package com.petcommunity.petcommunityworker.infrastructure.mail;
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
-import com.petcommunity.petcommunityworker.infrastructure.mail.dto.EmailEvent;
+import com.petcommunity.petcommunityworker.infrastructure.mail.object.EmailEvent;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;

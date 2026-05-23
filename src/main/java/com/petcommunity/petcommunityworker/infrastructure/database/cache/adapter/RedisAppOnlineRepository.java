@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class RedisAppOnlineCacheAdapter implements AppOnlineCachePort {
+public class RedisAppOnlineRepository implements AppOnlineCachePort {
 
     private final StringRedisTemplate redisTemplate;
 

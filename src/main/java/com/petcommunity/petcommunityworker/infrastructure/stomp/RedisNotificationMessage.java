@@ -1,6 +1,6 @@
 package com.petcommunity.petcommunityworker.infrastructure.stomp;
 
-import com.petcommunity.petcommunityworker.application.usecase.notification.dto.NotificationDto;
+import com.petcommunity.petcommunityworker.application.usecase.notification.object.NotificationDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

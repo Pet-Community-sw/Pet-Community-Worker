@@ -9,7 +9,7 @@ import java.time.Duration;
 
 @Repository
 @RequiredArgsConstructor
-public class RedisNotificationCacheAdapter implements NotificationsCachePort {
+public class RedisNotificationRepository implements NotificationsCachePort {
 
     private final StringRedisTemplate template;
 

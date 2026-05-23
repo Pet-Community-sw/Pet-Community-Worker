@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.infrastructure.mail.dto;
+package com.petcommunity.petcommunityworker.infrastructure.mail.object;
 
 
 import lombok.AllArgsConstructor;

@@ -6,6 +6,4 @@ public interface EmailCachePort {
     boolean exist(String key);
 
     void delete(String key);
-
-    String get(String key);
 }

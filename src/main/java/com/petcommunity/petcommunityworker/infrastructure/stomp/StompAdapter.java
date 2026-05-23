@@ -2,7 +2,7 @@ package com.petcommunity.petcommunityworker.infrastructure.stomp;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.SendPort;
-import com.petcommunity.petcommunityworker.application.usecase.notification.dto.NotificationDto;
+import com.petcommunity.petcommunityworker.application.usecase.notification.object.NotificationDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;

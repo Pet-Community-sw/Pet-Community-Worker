@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.usecase.notification.dto;
+package com.petcommunity.petcommunityworker.application.usecase.notification.object;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

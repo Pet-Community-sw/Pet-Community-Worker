@@ -9,7 +9,7 @@ import java.time.Duration;
 
 @Repository
 @RequiredArgsConstructor
-public class RedisEmailCacheAdapter implements EmailCachePort {
+public class RedisEmailRepository implements EmailCachePort {
 
     private final StringRedisTemplate template;
 
