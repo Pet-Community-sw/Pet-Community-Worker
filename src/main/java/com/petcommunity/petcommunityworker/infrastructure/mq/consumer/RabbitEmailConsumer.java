@@ -1,5 +1,6 @@
 package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
 
+import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.infrastructure.mail.MailProvider;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitKeys;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitRetryHandler;
@@ -18,11 +19,11 @@ public class RabbitEmailConsumer {
     private final MailProvider mailProvider;
 
     @RabbitListener(queues = RabbitKeys.MAIL_QUEUE)
-    public void handle(OutboxMessage outboxMessage, Message message) {//메시지 본문과 메타데이터를 받음
+    public void handle(EventMessage eventMessage, Message message) {//메시지 본문과 메타데이터를 받음
         try {
-            mailProvider.send(outboxMessage);
+            mailProvider.send(eventMessage);
         } catch (Exception e) {
-            rabbitRetryHandler.handle(outboxMessage, message, e);
+            rabbitRetryHandler.handle(eventMessage, message, e);
         }
     }
 }

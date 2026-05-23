@@ -1,5 +1,6 @@
 package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
 
+import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.application.usecase.notification.NotificationUseCase;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitKeys;
 import com.petcommunity.petcommunityworker.infrastructure.mq.RabbitRetryHandler;
@@ -16,11 +17,11 @@ public class RabbitNotificationConsumer {
     private final RabbitRetryHandler handler;
 
     @RabbitListener(queues = RabbitKeys.NOTIFICATION_QUEUE)
-    public void handle(OutboxMessage outboxMessage, Message message) {
+    public void handle(EventMessage eventMessage, Message message) {
         try {
-            useCase.send(outboxMessage);
+            useCase.send(eventMessage);
         } catch (Exception e) {
-            handler.handle(outboxMessage, message, e);
+            handler.handle(eventMessage, message, e);
         }
     }
 }

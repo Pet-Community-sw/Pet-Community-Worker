@@ -1,11 +1,11 @@
 package com.petcommunity.petcommunityworker.application.service.member;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
-import com.petcommunity.petcommunityworker.application.usecase.MemberSearchUseCase;
-import com.petcommunity.petcommunityworker.application.usecase.object.MemberEvent;
+import com.petcommunity.petcommunityworker.application.service.member.object.MemberEvent;
+import com.petcommunity.petcommunityworker.application.usecase.member.MemberSearchUseCase;
+import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import com.petcommunity.petcommunityworker.domain.member.MemberSearchRepository;
 import com.petcommunity.petcommunityworker.domain.member.mapper.MemberMapper;
-import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -19,9 +19,9 @@ public class MemberSearchService implements MemberSearchUseCase {
     private final JsonUtil jsonUtil;
 
     @Override
-    public void handle(OutboxMessage outboxMessage) {
-        MemberEvent memberEvent = jsonUtil.fromJson(outboxMessage.getPayload(), MemberEvent.class);
-        Long id = outboxMessage.getId();
+    public void handle(EventMessage eventMessage) {
+        MemberEvent memberEvent = jsonUtil.fromJson(eventMessage.getPayload(), MemberEvent.class);
+        Long id = eventMessage.getId();
         switch (memberEvent.getMethodType()) {
             case CREATE -> create(memberEvent, id);
             case UPDATE -> update(memberEvent, id);

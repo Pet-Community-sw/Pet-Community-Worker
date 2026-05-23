@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.application.usecase.email;
+package com.petcommunity.petcommunityworker.infrastructure.mail.dto;
 
 
 import lombok.AllArgsConstructor;

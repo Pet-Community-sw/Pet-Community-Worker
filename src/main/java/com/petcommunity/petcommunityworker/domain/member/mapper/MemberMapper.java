@@ -1,7 +1,7 @@
 package com.petcommunity.petcommunityworker.domain.member.mapper;
 
 
-import com.petcommunity.petcommunityworker.application.usecase.object.MemberEvent;
+import com.petcommunity.petcommunityworker.application.service.member.object.MemberEvent;
 import com.petcommunity.petcommunityworker.domain.member.model.MemberSearch;
 
 public class MemberMapper {

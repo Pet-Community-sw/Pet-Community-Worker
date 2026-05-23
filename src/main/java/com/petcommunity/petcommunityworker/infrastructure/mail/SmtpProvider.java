@@ -2,8 +2,8 @@ package com.petcommunity.petcommunityworker.infrastructure.mail;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailEvent;
-import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;
+import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
+import com.petcommunity.petcommunityworker.infrastructure.mail.dto.EmailEvent;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
@@ -30,8 +30,8 @@ public class SmtpProvider implements MailProvider {
     private String email;
 
     @Override
-    public void send(OutboxMessage outboxMessage) {
-        EmailEvent event = jsonUtil.fromJson(outboxMessage.getPayload(), EmailEvent.class);
+    public void send(EventMessage eventMessage) {
+        EmailEvent event = jsonUtil.fromJson(eventMessage.getPayload(), EmailEvent.class);
         if (!port.exist(event.getToEmail())) { //멱등 처리
 
             MimeMessage message = javaMailSender.createMimeMessage();

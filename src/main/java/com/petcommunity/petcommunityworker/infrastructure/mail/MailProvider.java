@@ -1,8 +1,8 @@
 package com.petcommunity.petcommunityworker.infrastructure.mail;
 
 
-import com.petcommunity.petcommunityworker.infrastructure.mq.consumer.OutboxMessage;
+import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 
 public interface MailProvider {
-    void send(OutboxMessage outboxMessage);
+    void send(EventMessage eventMessage);
 }

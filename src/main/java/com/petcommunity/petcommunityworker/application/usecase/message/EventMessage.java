@@ -1,4 +1,4 @@
-package com.petcommunity.petcommunityworker.infrastructure.mq.consumer;
+package com.petcommunity.petcommunityworker.application.usecase.message;
 
 
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @ToString
-public class OutboxMessage {
+public class EventMessage {
 
     private Long id;
 
