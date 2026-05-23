@@ -12,7 +12,7 @@ public class RedisAppOnlineRepository implements AppOnlineCachePort {
     private final StringRedisTemplate redisTemplate;
 
     // Foreground members
-    public static String getKey() {
+    private static String getKey() {
         return "foreGroundMembers";
     }
 
