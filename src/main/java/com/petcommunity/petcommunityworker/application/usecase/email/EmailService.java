@@ -1,11 +1,10 @@
-package com.petcommunity.petcommunityworker.application.service.email;
+package com.petcommunity.petcommunityworker.application.usecase.email;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.EmailPort;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailCode;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailEvent;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailUseCase;
+import com.petcommunity.petcommunityworker.application.usecase.email.object.EmailCode;
+import com.petcommunity.petcommunityworker.application.usecase.email.object.EmailEvent;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

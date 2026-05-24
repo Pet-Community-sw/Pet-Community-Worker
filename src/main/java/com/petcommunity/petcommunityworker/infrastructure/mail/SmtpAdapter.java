@@ -1,7 +1,7 @@
 package com.petcommunity.petcommunityworker.infrastructure.mail;
 
 import com.petcommunity.petcommunityworker.application.out.EmailPort;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailEvent;
+import com.petcommunity.petcommunityworker.application.usecase.email.object.EmailEvent;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;

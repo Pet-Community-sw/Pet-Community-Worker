@@ -1,11 +1,10 @@
-package com.petcommunity.petcommunityworker.application.service.notification;
+package com.petcommunity.petcommunityworker.application.usecase.notification;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.NotificationPort;
 import com.petcommunity.petcommunityworker.application.out.cache.AppOnlineCachePort;
 import com.petcommunity.petcommunityworker.application.out.cache.NotificationCachePort;
 import com.petcommunity.petcommunityworker.application.usecase.message.EventMessage;
-import com.petcommunity.petcommunityworker.application.usecase.notification.NotificationUseCase;
 import com.petcommunity.petcommunityworker.application.usecase.notification.object.NotificationDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

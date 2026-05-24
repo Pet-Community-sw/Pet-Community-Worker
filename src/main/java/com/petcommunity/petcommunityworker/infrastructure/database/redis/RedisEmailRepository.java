@@ -2,7 +2,7 @@ package com.petcommunity.petcommunityworker.infrastructure.database.redis;
 
 import com.petcommunity.petcommunityworker.application.common.JsonUtil;
 import com.petcommunity.petcommunityworker.application.out.cache.EmailCachePort;
-import com.petcommunity.petcommunityworker.application.usecase.email.EmailCode;
+import com.petcommunity.petcommunityworker.application.usecase.email.object.EmailCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
