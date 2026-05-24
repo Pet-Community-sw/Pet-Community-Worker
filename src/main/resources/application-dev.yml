@@ -33,13 +33,9 @@ spring:
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
 
-logging:
-  level:
-    org.elasticsearch.client: TRACE
-
 mail:
   provider: smtp
 
 server:
   address: 0.0.0.0
-  port: 8081
+  port: 8080
