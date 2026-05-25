@@ -14,5 +14,9 @@ tmp
 *.iml
 debezium/data
 
+docker-compose*.yml
+
+.github
+
 src/test
 **/src/test/**
