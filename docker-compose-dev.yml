@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:8080"
     env_file:
-      - .env.dev
+      - .env
     depends_on:
       rabbitmq:
         condition: service_healthy
@@ -18,7 +18,6 @@ services:
     container_name: pet-worker-rabbitmq
     restart: always
     ports:
-      - "5672:5672"# RabbitMQ 서버 포트
       - "15672:15672"# 관리 UI 포트
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
@@ -34,7 +33,7 @@ services:
 
   debezium:
     env_file: # 환경변수 파일을 사용하여 설정값을 관리할 수 있도록 env_file 옵션 추가
-      - .env.dev
+      - .env
     image: quay.io/debezium/server:3.4
     container_name: pet-worker-debezium
     restart: always

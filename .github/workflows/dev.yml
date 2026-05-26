@@ -23,13 +23,22 @@ jobs:
       - name: Docker Image Push
         run: docker push sunjaegood/pet-community-worker:dev
 
-      - name: scp to EC2
+      - name: scp to EC2 docker-compose
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           source: docker-compose-dev.yml
+          target: /home/ec2-user/worker
+
+      - name: scp to EC2 debezium-config
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: debezium/config/application.properties
           target: /home/ec2-user/worker
 
       - name: SSH로 EC2에 접속
@@ -43,6 +52,7 @@ jobs:
           envs: ENV
           script: |
             cd /home/ec2-user/worker
+            chmod 755 debezium
             echo "$ENV" > .env
             sudo docker pull sunjaegood/pet-community-worker:dev
             sudo docker compose -f docker-compose-dev.yml up -d --remove-orphans
