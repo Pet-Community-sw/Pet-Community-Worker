@@ -11,13 +11,13 @@ import java.time.Duration;
 
 @Repository
 @RequiredArgsConstructor
-public class RedisEmailRepository implements EmailCachePort {
+public class RedisEmailAdapter implements EmailCachePort {
 
     private final StringRedisTemplate template;
     private final JsonUtil jsonUtil;
 
     @Override
-    public void create(String key, EmailCode emailCode, long duration) {
+    public void createAuthCode(String key, EmailCode emailCode, long duration) {
         template.opsForValue().set(key, jsonUtil.toJson(emailCode), Duration.ofMinutes(duration));
     }
 

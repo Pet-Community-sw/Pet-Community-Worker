@@ -28,7 +28,7 @@ public class EmailService implements EmailUseCase {
         String code = buildCode();
 
         emailPort.send(emailEvent, code);
-        emailCachePort.create(emailEvent.getToEmail(), new EmailCode(code, eventMessage.getId()), 3); // ttl 설정
+        emailCachePort.createAuthCode(emailEvent.getToEmail(), new EmailCode(code, eventMessage.getId()), 3); // ttl 설정
     }
 
     private String buildCode() {
