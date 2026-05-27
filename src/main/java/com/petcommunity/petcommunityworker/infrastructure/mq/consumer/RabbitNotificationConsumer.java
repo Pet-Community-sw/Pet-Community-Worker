@@ -14,7 +14,7 @@ public class RabbitNotificationConsumer extends RabbitAbstractConsumer {
     private final NotificationUseCase useCase;
 
     @RabbitListener(queues = RabbitKeys.NOTIFICATION_QUEUE)
-    public void handle(EventMessage eventMessage, Message message) {
+    public void listener(EventMessage eventMessage, Message message) {
         consume(eventMessage, message);
     }
 
