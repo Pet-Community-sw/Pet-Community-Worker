@@ -17,7 +17,7 @@ public class RabbitEmailConsumer extends RabbitAbstractConsumer {
     private final EmailUseCase useCase;
 
     @RabbitListener(queues = RabbitKeys.MAIL_QUEUE)
-    public void handle(EventMessage eventMessage, Message message) {//메시지 본문과 메타데이터를 받음
+    public void listener(EventMessage eventMessage, Message message) {//메시지 본문과 메타데이터를 받음
         consume(eventMessage, message);
     }
 

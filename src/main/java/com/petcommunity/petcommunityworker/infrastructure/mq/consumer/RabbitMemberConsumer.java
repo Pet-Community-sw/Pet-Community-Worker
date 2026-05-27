@@ -15,7 +15,7 @@ public class RabbitMemberConsumer extends RabbitAbstractConsumer {
     private final MemberSearchUseCase useCase;
 
     @RabbitListener(queues = RabbitKeys.MEMBER_QUEUE)
-    public void hande(EventMessage eventMessage, Message message) {
+    public void listener(EventMessage eventMessage, Message message) {
         consume(eventMessage, message);
     }
 
