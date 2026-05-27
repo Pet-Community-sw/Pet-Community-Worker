@@ -22,6 +22,4 @@ Worker Server는 API 서버에서 발생한 비동기 이벤트를 처리하는 
 ---
 
 ## CI/CD Architecture
-<img width="1149" height="593" alt="Screenshot 2026-05-26 at 12 22 12" src="https://github.com/user-attachments/assets/51ec0209-5f3f-4531-afa5-4bb0611b86d7" />
-
-
+<img width="1147" height="584" alt="CI:CD Architecture" src="https://github.com/user-attachments/assets/b5d9e202-7a0b-45c6-9738-9e7a571784ad" />
