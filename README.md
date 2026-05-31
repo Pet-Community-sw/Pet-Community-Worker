@@ -17,7 +17,7 @@ Worker Server는 API 서버에서 발생한 비동기 이벤트를 처리하는 
 ---
 
 ## System Architecture
-<img width="603" height="524" alt="System Architecutre" src="https://github.com/user-attachments/assets/ac24e854-55a4-4cd6-b449-e6dafe60bd08" />
+<img width="634" height="544" alt="System Architecture" src="https://github.com/user-attachments/assets/7358e8bb-6fb8-4106-ba59-e8ec2112fb29" />
 
 ---
 
