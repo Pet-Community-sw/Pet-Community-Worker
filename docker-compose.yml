@@ -1,17 +1,14 @@
 services:
   rabbitmq:
     image: rabbitmq:3-management
-    container_name: pet-worker-rabbitmq
-    restart: always
     networks:
       - pet-community-network
     ports:
       - "5672:5672"# RabbitMQ 서버 포트
       - "15672:15672"# 관리 UI 포트
     environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-      TZ: Asia/Seoul
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USERNAME:-guest}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-guest}
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
     healthcheck:
@@ -21,11 +18,17 @@ services:
       retries: 10
 
   debezium:
-    env_file: # 환경변수 파일을 사용하여 설정값을 관리할 수 있도록 env_file 옵션 추가
-      - .env
+    environment:
+      RABBITMQ_PORT: ${RABBITMQ_PORT:-5672}
+      RABBITMQ_USERNAME: ${RABBITMQ_USERNAME:-guest}
+      RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD:-guest}
+      MYSQL_HOST: ${MYSQL_HOST:-mysql}
+      MYSQL_PORT: ${MYSQL_PORT:-3306}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-test}
+      DEBEZIUM_USER: ${DEBEZIUM_USER:-debezium}
+      DEBEZIUM_PASSWORD: ${DEBEZIUM_PASSWORD:-debezium1234}
+      DEBEZIUM_SOURCE_DATABASE_SERVER_ID: ${DEBEZIUM_SOURCE_DATABASE_SERVER_ID:-12345}
     image: quay.io/debezium/server:3.4
-    container_name: pet-worker-debezium
-    restart: always
     networks:
       - pet-community-network
     depends_on:
@@ -41,5 +44,4 @@ networks:
 
 volumes:
   rabbitmq-data:
-
 
