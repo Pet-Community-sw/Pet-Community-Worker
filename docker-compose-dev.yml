@@ -1,7 +1,6 @@
 services:
   app:
     image: sunjaegood/pet-community-worker:dev
-    container_name: pet-worker
     ports:
       - "8080:8080"
     env_file:
@@ -15,8 +14,6 @@ services:
 
   rabbitmq:
     image: rabbitmq:3-management
-    container_name: pet-worker-rabbitmq
-    restart: always
     ports:
       - "15672:15672"# 관리 UI 포트
     environment:
@@ -35,8 +32,6 @@ services:
     env_file: # 환경변수 파일을 사용하여 설정값을 관리할 수 있도록 env_file 옵션 추가
       - .env
     image: quay.io/debezium/server:3.4
-    container_name: pet-worker-debezium
-    restart: always
     depends_on:
       rabbitmq:
         condition: service_healthy

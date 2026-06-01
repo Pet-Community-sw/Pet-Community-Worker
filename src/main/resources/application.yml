@@ -1,12 +1,12 @@
 spring:
   elasticsearch:
-    uris: ${ELASTICSEARCH_URI}
+    uris: ${ELASTICSEARCH_URI:http://localhost:9200}
 
   mail:
-    host: ${SMTP_HOST}
-    port: ${SMTP_PORT}
-    username: ${SMTP_EMAIL}
-    password: ${SMTP_PASSWORD}
+    host: ${SMTP_HOST:localhost}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_EMAIL:email}
+    password: ${SMTP_PASSWORD:password}
     properties:
       mail:
         smtp:
@@ -16,9 +16,9 @@ spring:
     default-encoding: UTF-8
 
   rabbitmq:
-    addresses: ${RABBITMQ_HOST}:${RABBITMQ_PORT}
-    username: ${RABBITMQ_USERNAME}
-    password: ${RABBITMQ_PASSWORD}
+    addresses: ${RABBITMQ_HOST:localhost}:${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USERNAME:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
     listener:
       simple:
         prefetch: 10
@@ -30,8 +30,8 @@ spring:
 
   data:
     redis:
-      host: ${REDIS_HOST}
-      port: ${REDIS_PORT}
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
 
 logging:
   level:
